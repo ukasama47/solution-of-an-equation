@@ -1,38 +1,37 @@
+import sys
 
-def calculate_average(scores):
-    total = sum(scores)
-    average = total / len(scores)
-    return average
-
-def check_pass_fail(score):
-    if score >= 60:
-        return "合格"
-    else:
-        return "不合格"
+def discriminate(a, b, c):
+    discriminant = b**2 - 4*a*c
+    return discriminant
 
 def main():
-    # 学生の点数
-    scores = [55,34,65,43,78,98,65,44,54,66]
+    print("2次方程式 ax^2 + bx + c = 0 の解がどのようになるか判別します。\n")
 
-    # 学生の点数の入力を求める場合は下記の先頭の#をすべて外し、上記の”#学生の点数”を消してください
-    #scores = []
-    #for i in range(1, 11):
-     #   score = int(input(f"{i}番目の学生の点数を入力してください: "))
-     #   scores.append(score)
+    # 係数の受け取り
+    try:
+        a = float(input("aの値を入力してください: "))
+        b = float(input("bの値を入力してください: "))
+        c = float(input("cの値を入力してください: "))
+    except ValueError:
+        print("無効な入力です。数値を入力してください。")
+        sys.exit(1)
 
-    # 最高点・最低点・平均点を計算
-    maximum = max(scores)
-    minimum = min(scores)
-    average = calculate_average(scores)
+    # 判別式を計算
+    discriminant = discriminate(a, b, c)
 
-    # 最高点・最低点・平均点を表示
-    print("最高点:", maximum)
-    print("最低点:", minimum)
-    print("平均点:", format(average, ".2f"))
+    print("\n判別式 b^2 - 4ac =", discriminant)
 
-    # 合否を表示
-    print("\n合否")
-    for i, score in enumerate(scores, start=1):
+    # 解の性質を判別して結果を表示
+    if discriminant > 0:
+        print("2実数解")
+    elif discriminant == 0:
+        print("重解")
+    else:
+        print("虚数解")
+
+# プログラムを実行
+main()
+
         result = check_pass_fail(score)
         print(f"{i}: {score}点 {result}")
 
