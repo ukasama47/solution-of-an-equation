@@ -1,4 +1,3 @@
-#1211201118 hayashi yuka
 
 def calculate_average(scores):
     total = sum(scores)
